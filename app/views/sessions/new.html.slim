@@ -1,2 +1,6 @@
-h1 Sessions#new
-p Find me in app/views/sessions/new.html.erb
+h1 Go Fish!
+
+= form_for @user, url: sessions_path(@user) do |f|
+  = f.label :name, "Name"
+  = f.text_field :name
+  = f.submit 'Play'
