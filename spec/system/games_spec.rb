@@ -14,7 +14,4 @@ RSpec.describe 'Games', type: :system do
 
   # it 'starts a game when enough players join' do
   # end
-
-  # it 'allows creating a game' do
-  # end
 end

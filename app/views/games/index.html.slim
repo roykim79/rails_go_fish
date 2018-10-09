@@ -1,1 +1,4 @@
 h1 Pending Games
+- @games.each do |game|
+  - link_content = "#{game.player_count} Player #{game.game_users.count}/#{game.player_count}"
+  = link_to link_content, game
