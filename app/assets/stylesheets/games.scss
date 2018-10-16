@@ -1,3 +1,176 @@
-// Place all the styles related to the Games controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.back-to-lobby {
+  background: #FB770C;
+  height: 48px;
+  left: 12px;
+  top: 12px;
+}
+
+.back-to-lobby a {
+  color: #fff;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  line-height: 48px;
+}
+
+.current-player {
+  background: #ff0;
+}
+
+.player.empty {
+  width: 174px;
+}
+
+.player-hand {
+  height: 40px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  width: 174px;
+}
+
+.card {
+  border: 2px solid #ddd;
+  display: inline-block;
+  height: 36px;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  width: 24px;
+}
+
+.stacked {
+  margin-left: -20px;
+}
+
+.stacked-tight {
+  margin-left: -24px;
+}
+
+.card-back {
+  background: #f00;
+}
+
+.card-front {
+  background: #fff;
+  top: -12px;
+}
+
+.card-count {
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 50%;
+  height: 32px;
+  line-height: 32px;
+  left: 50%;
+  position: absolute;
+  top: 3px;
+  width: 32px;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+}
+
+.deck {
+  padding: 24px;
+  // word-spacing: -28px;
+}
+
+.deck-count {
+  background: #fff;
+  position: absolute;
+}
+
+.visible-card,
+button.visible-card {
+  background: #fff;
+  border: 1px solid #555;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 24px;
+  height: 72px;
+  line-height: 72px;
+  text-align: center;
+  width: 52px;
+}
+
+.first-player {
+  text-align: center;
+}
+
+.player-info {
+  background: #555;
+  margin: auto;
+  text-align: center;
+  width: 174px;
+}
+
+.name,
+.set-count {
+  color: #fff;
+  line-height: 24px;
+}
+
+.table {
+  background: #347634;
+  border: 2px solid #aaa;
+  border-radius: 50%;
+  height: 92px;
+  width: 280px;
+}
+
+.join-game {
+  background: #347634;
+  bottom: 8px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 48px;
+  position: absolute;
+  right: 8px;
+  text-align: center;
+}
+
+.message {
+  border-radius: 50%;
+  background: #F1C40F;
+  height: 44px;
+  padding: 24px 12px;
+  text-align: center;
+  vertical-align: bottom;
+  width: 256px;
+}
+
+.modal {
+  background: rgba(0,0,0,.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10%;
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
+.modal__content {
+  background: #555;
+  color: #fff;
+  height: 50%;
+  padding: 10%;
+}
+
+.modal-text {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+input.hidden {
+  position: absolute;
+  visibility: hidden;
+}
+
+input.hidden:checked + label {
+  background: red;
+}

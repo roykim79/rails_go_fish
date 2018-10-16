@@ -1,0 +1,46 @@
+@import 'layout';
+@import 'utility';
+@import 'sessions';
+@import 'games';
+
+
+/******** BASE /********/
+body {
+  background: #555;
+  font-family: 'Arial', sans-serif ;
+}
+
+input {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 24px;
+  padding: 4px;
+  width: 80%;
+}
+
+button {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 48px;
+  padding: 12px;
+}
+
+form {
+  width: 100%;
+}
+
+.app-header {
+  background: #555;
+  color: #fff;
+  text-align: center;
+}
+
+.signup__container {
+  margin-top: 50px;
+}
+
+.signup__container--button {
+  margin: 0 auto;
+}

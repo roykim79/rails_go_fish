@@ -1,0 +1,21 @@
+- if player
+  - if player == @game.current_player
+    .player.current-player
+      .player-hand
+        - player.hand.each do |card|
+          .card.stacked.card-back
+        .card-count #{player.card_count}
+      .player-info
+        .name #{player.name}
+        .set-count Sets #{player.sets}
+  - else
+    .player
+      .player-hand
+        - player.hand.each do |card|
+          .card.stacked.card-back
+        .card-count #{player.card_count}
+      .player-info
+        .name #{player.name}
+        .set-count Sets #{player.sets}
+- else
+  .player.empty

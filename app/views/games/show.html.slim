@@ -1,3 +1,28 @@
-h1 #{@game.player_count} Player game
-h2 #{@game.game_users.count} players waiting
-h3 Welcome #{@user.name}
+.container
+  .row.row--top
+    .back-to-lobby.fb100
+      a href="/lobby" Lobby
+    = render "player", player: @other_players[3]
+    = render "player", player: @other_players[2]
+    .quit-game.ta-r.fb100 X
+  .row.row--center
+    = render "player", player: @other_players[1]
+    .table
+      .deck
+        - @game.deck.count.times do
+          .card.stacked-tight.card-back
+      .deck-count #{@game.deck.count}
+    = render "player", player: @other_players[0]
+  .row.row--bottom
+    .player.first-player
+      .visible-player-hand.mb-8
+        - @user_player.hand.each do |card|
+          .visible-card #{card.rank}
+      .player-info.mt-8
+        .name #{@user_player.name}
+        .set-count Sets #{@user_player.sets}
+  / .modal
+    .modal__content
+      span.modal-text Are you sure you want to quit?
+      button name="button" type="button"  Yes
+      button name="button" type="button"  No

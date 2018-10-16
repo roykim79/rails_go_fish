@@ -1,0 +1,14 @@
+- if player
+  input.hidden required="" type="radio" name="player-name" value="#{player.name}" id="#{player.name}"
+  
+  label for="#{player.name}"
+    .player
+      .player-hand
+        - player.hand.each do |card|
+          .card.stacked.card-back
+        .card-count #{player.card_count}
+      .player-info
+        .name #{player.name}
+        .set-count Sets #{player.sets}
+- else
+  .player.empty

@@ -1,0 +1,31 @@
+/ form action="/game" method="post"
+= form_for @game do |f|
+  .container
+    .row.row--top
+      .back-to-lobby.fb100
+        a href="/lobby" Lobby
+      = render 'player_input', player: @other_players[3]
+      = render 'player_input', player: @other_players[2]
+      .quit-game.ta-r.fb100 X
+    .row.row--center
+      = render 'player_input', player: @other_players[1]
+      .table
+        .deck
+          - @game.deck.count.times do
+            .card.stacked-tight.card-back
+        .deck-count #{@game.deck.count}
+        / .message Click on a player and card
+      = render 'player_input', player: @other_players[0]
+    .row.row--bottom
+      .player.first-player.player-1-5
+        .visible-player-hand.mb-8
+          - @user_player.hand.each do |card|
+            = f.submit card.rank, :name => 'card_rank', :class => 'visible-card'
+        .player-info.mt-8
+          .name #{@user_player.name}
+          .set-count Sets #{@user_player.sets}
+    / .modal
+      .modal__content
+        span.modal-text Are you sure you want to quit?
+        button name="button" type="button"  Yes
+        button name="button" type="button"  No

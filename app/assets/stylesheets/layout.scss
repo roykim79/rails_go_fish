@@ -1,0 +1,46 @@
+.container {
+  background: #fff;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 375px;
+  margin: auto;
+  padding: 8px;
+  position: relative;
+  width: 667px;
+}
+
+.row,
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fb100 {
+  flex-basis: 100px;
+}
+
+.fg1 {
+  flex-grow: 1;
+}
+
+.fg2 {
+  flex-grow: 2;
+}
+
+.row--top {
+}
+
+.row--center {
+}
+
+.row--bottom {
+  justify-content: center;
+}

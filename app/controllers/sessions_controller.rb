@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_or_initialize_by user_params
     if @user.save
-      session[:current_user] = @user.id
+      session[:current_user_id] = @user.id
       redirect_to games_path, notice: 'Logged in successfully'
     else
-      render :new
+      redirect_to root_path
     end
   end
 
