@@ -1,4 +1,6 @@
-/ form action="/game" method="post"
+- @user_player = @game.players.find { |player| player.user_id == current_user.id }
+- @other_players = @game.players.reject { |player| player == @user_player }
+
 = form_for @game do |f|
   .container
     .row.row--top

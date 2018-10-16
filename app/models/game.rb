@@ -2,7 +2,8 @@ class Game < ApplicationRecord
   has_many :game_users, dependent: :destroy
   has_many :users, through: :game_users
   scope :pending, -> { where(started_at: nil) }
-  scope :in_progress, -> { where.not(started_at: nil) }
+  scope :in_progress, -> { where.not(started_at: nil).where(ended_at: nil) }
+  scope :finished, -> { where.not(started_at: nil).where.not(ended_at: nil) }
 
   def self.create_pending_games_if_needed
     (2..5).each do |player_count|

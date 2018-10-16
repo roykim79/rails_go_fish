@@ -7,13 +7,11 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @game.start
+    check_for_win(@game)
     if @game.pending?
-      @other_players = @game.users.reject { |user| user == current_user }
       render :waiting
-    else
-      @user_player = @game.players.find { |player| player.user_id == current_user.id }
-      @other_players = @game.players.reject { |player| player == @user_player }
-      render :play_turn if users_turn?(@game)
+    elsif users_turn?(@game)
+      render :play_turn
     end
   end
 
@@ -21,6 +19,16 @@ class GamesController < ApplicationController
     game = Game.find(params[:id])
     game.play_turn(params['player-name'], params['card_rank'])
     redirect_to game_path(game)
+  end
+
+  def check_for_win(game)
+    puts 'A'
+    if game.winner
+      game.update(ended_at: Time.zone.now)
+      puts 'B'
+      ###############################################################
+      # game_user.update(winner: true)
+    end
   end
 
   private
