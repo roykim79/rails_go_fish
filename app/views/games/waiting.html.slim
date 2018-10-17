@@ -1,18 +1,18 @@
 - player1 = @user_player
-- @other_players = @game.users.reject { |user| user == current_user }
+- other_players = @game.users.reject { |user| user == current_user }
 
 .container
   .row.row--top
     .back-to-lobby.fb100
       a href="/lobby"  Lobby
-    = render "player_waiting", player: @other_players[3]
-    = render "player_waiting", player: @other_players[2]
+    = render "player_waiting", player: other_players[3]
+    = render "player_waiting", player: other_players[2]
     .quit-game.ta-r.fb100 X
   .row.row--center
-    = render "player_waiting", player: @other_players[1]
+    = render "player_waiting", player: other_players[1]
     .table
       .message Waiting
-    = render "player_waiting", player: @other_players[0]
+    = render "player_waiting", player: other_players[0]
   .row.row--bottom
     .player.first-player
       .player-info.mt-8

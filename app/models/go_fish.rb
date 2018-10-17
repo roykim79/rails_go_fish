@@ -1,7 +1,7 @@
 class GoFish
   attr_accessor :players, :deck, :turn
 
-  def initialize(players, deck = CardDeck.new, turn = 0)
+  def initialize(players, deck = env_deck, turn = 0)
     @players = players
     @deck = deck
     @turn = turn
@@ -39,7 +39,7 @@ class GoFish
     if deck.count.zero?
       players.max_by(&:set_count)
     else
-      players.find { |player| player.card_count == 0 }
+      players.find { |player| player.card_count.zero? }
     end
   end
 
@@ -67,5 +67,9 @@ class GoFish
 
   def go_fish
     current_player.take([deck.deal])
+  end
+
+  def env_deck
+    Rails.env.test? ? TestDeck.new : CardDeck.new
   end
 end

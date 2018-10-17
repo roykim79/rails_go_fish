@@ -37,6 +37,14 @@ RSpec.describe 'Games', type: :system do
   context 'with multiple sessions' do
     let(:session1) { Capybara::Session.new(:rack_test, Rails.application) }
     let(:session2) { Capybara::Session.new(:rack_test, Rails.application) }
+    let(:sessions) { [session1, session2] }
+
+    def play_rounds(arr)
+      arr.each do |item|
+        session1.choose 'Player 2'
+        session1.find("input[id^=#{item}]").click
+      end
+    end
 
     before do
       [session1, session2].each_with_index do |session, index|
@@ -46,27 +54,32 @@ RSpec.describe 'Games', type: :system do
         session.click_on 'Play'
         session.click_on '2 Player'
       end
+      session1.driver.refresh
     end
 
     it 'will start a game when there are enough players' do
       expect(Game.in_progress.count).to eq 1
-      session1.driver.refresh
-      expect(session1).to have_content 'Player', count: 2
+      expect(session1).to have_css '.player', count: 2
     end
 
     it 'will display inputs for the current player' do
-      session1.driver.refresh
       expect(session1).to have_css 'input'
       expect(session2).not_to have_css 'input'
     end
 
     it 'allows the player to play a turn' do
-      session1.driver.refresh
       session1.choose 'Player 2'
-      session1.first('input[type=submit]').click
+      session1.find('#ADiamonds').click
       expect(session1).not_to have_css 'input'
       session2.driver.refresh
       expect(session2).to have_css 'input'
+    end
+
+    it 'will display the winning template when the game has been won' do
+      play_rounds(['JD', 'QD', 'KD', 'AD'])
+      sessions.each { |session| session.driver.refresh }
+      sessions.each { |session| expect(session).to have_content 'Game over' }
+      expect(Game.finished.count).to eq 1
     end
   end
 end

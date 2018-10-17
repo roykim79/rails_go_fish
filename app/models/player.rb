@@ -50,6 +50,7 @@ class Player
       sets_made.push(rank) if complete_set?(rank) && !sets.include?(rank)
     end
     return if sets_made.count.zero?
+    puts sets_made
 
     pull_sets_from_hand(sets_made.uniq!)
     sets_made

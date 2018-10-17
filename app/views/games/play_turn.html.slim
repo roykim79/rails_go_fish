@@ -22,7 +22,7 @@
       .player.first-player.player-1-5
         .visible-player-hand.mb-8
           - @user_player.hand.each do |card|
-            = f.submit card.rank, :name => 'card_rank', :class => 'visible-card'
+            = f.submit card.rank, name: 'card_rank', class: 'visible-card', id: card.rank + card.suit
         .player-info.mt-8
           .name #{@user_player.name}
           .set-count Sets #{@user_player.sets}

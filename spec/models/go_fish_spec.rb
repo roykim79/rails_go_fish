@@ -1,6 +1,27 @@
 require 'rails_helper'
 
-describe GoFish do
+class TestDeck < CardDeck
+  RANKS = %w[A K Q J].freeze
+  SUITS = %w[Spades Hearts Clubs Diamonds].freeze
+
+  def from_json(data)
+    TestDeck.new(PlayingCard.collection_from_data(data['cards']))
+  end
+
+  def initialize(cards = TestDeck.full_deck)
+    @cards = cards
+  end
+
+  def self.full_deck
+    RANKS.flat_map { |rank| SUITS.map { |suit| PlayingCard.new(rank, suit) } }
+  end
+
+  def shuffle
+
+  end
+end
+
+RSpec.describe GoFish do
   let(:player1) { Player.new('Jim', 1) }
   let(:player2) { Player.new('Bob', 2) }
   let(:game) { GoFish.new([player1, player2]) }

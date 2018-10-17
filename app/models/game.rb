@@ -1,6 +1,7 @@
 class Game < ApplicationRecord
   has_many :game_users, dependent: :destroy
   has_many :users, through: :game_users
+  belongs_to :winner, class_name: 'User', optional: true
   scope :pending, -> { where(started_at: nil) }
   scope :in_progress, -> { where.not(started_at: nil).where(ended_at: nil) }
   scope :finished, -> { where.not(started_at: nil).where.not(ended_at: nil) }
@@ -56,6 +57,9 @@ class Game < ApplicationRecord
   end
 
   def winner
+    return unless go_fish.winner
+
+    update(winner_id: go_fish.winner.user_id, ended_at: Time.zone.now)
     go_fish.winner
   end
 end
